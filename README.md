@@ -1,4 +1,5 @@
 # mixmax-location
+> 🗺 ❗️ Google Maps App for current location in Mixmax
 
 ![Demo](assets/demo.gif)
 

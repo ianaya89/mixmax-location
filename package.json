@@ -1,7 +1,7 @@
 {
   "name": "mixmax-location",
   "version": "0.0.1",
-  "description": "Google Maps App for current location in Mixmax",
+  "description": "🗺 ❗️Google Maps App for current location in Mixmax",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
