@@ -8,7 +8,6 @@ module.exports = function(req, res) {
   var width = data.width > 600 ? 600 : data.width;
   var html = data.src;
   res.json({
-    body: html
-    // Add raw:true if you're returning content that you want the user to be able to edit
+    body: `<div> <h1>Current Location</h1> ${html} </div>`
   });
 };
