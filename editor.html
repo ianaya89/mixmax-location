@@ -32,27 +32,33 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntOFUzsjtroqZkB_lB6IimZnYOvzgaRg&callback=initMap" async defer></script>
 
    <script>
-      let map;
+      // let map;
       const btnDone = document.getElementById('btnDone')
       const btnCancel = document.getElementById('btnCancel')
+      //
+      // function initMap() {
+      //   navigator.geolocation.getCurrentPosition((position) => {
+      //     const center = { lat: position.coords.latitude, lng:  position.coords.longitude}
+      //     map = new google.maps.Map(document.getElementById('map'), {
+      //       center,
+      //       zoom: 17
+      //      });
+      //    })
+      //
+      //
+      //
+      //    btnDone.addEventListener('click', () => {
+      //     Mixmax.cancel()
+      //   })
+      // }
 
-      function initMap() {
-        navigator.geolocation.getCurrentPosition((position) => {
-          const center = { lat: position.coords.latitude, lng:  position.coords.longitude}
-          map = new google.maps.Map(document.getElementById('map'), {
-            center,
-            zoom: 17
-           });
-         })
+      btnDone.addEventListener('click', () => {
+        Mixmax.done({})
+      })
 
-        btnDone.addEventListener('click', () => {
-          ixmax.done({})
-        })
-
-         btnDone.addEventListener('click', () => {
-          Mixmax.cancel()
-        })
-      }
+      btnDone.addEventListener('click', () => {
+        Mixmax.cancel()
+      })
      </script>
 </body>
 </html>
