@@ -1,0 +1,48 @@
+<html style="background-color: #0a0f14">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Mixmax &middot; Map</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.min.css">
+    <script defer src="https://d1xa36cy0xt122.cloudfront.net/v1/Mixmax.js"></script>
+  </head>
+
+  <body data-current-theme="gmail">
+    <div class="bg-white  app-popup  flexbox  flexbox--column">
+      <header class="toolbar  text-reverse  text-medium  text-center  toolbar--app  gamma  ui-face">Mixmax Map</header>
+
+      <main class="flex-fill  scroll-y  bg-grey-15">
+        <iframe style="display: none" id="map" width="100%" height="100%" frameborder="0" style="border:0"></iframe>
+      </main>
+    </div>
+
+     <script>
+        (function () {
+          const map = document.getElementById('map')
+
+          function getParameterByName(name, url) {
+            url = url || window.location.href
+            name = name.replace(/[\[\]]/g, '\\$&')
+
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)')
+            const results = regex.exec(url)
+
+            if (!results) { return null }
+            if (!results[2]) { return '' }
+
+            return decodeURIComponent(results[2].replace(/\+/g, ' '))
+          }
+
+          const q = getParameterByName('q')
+          const mapUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDntOFUzsjtroqZkB_lB6IimZnYOvzgaRg&q=${q}`
+
+          map.src = mapUrl
+          map.style.display = 'block'
+
+        })();
+      </script>
+  </body>
+</html>
