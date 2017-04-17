@@ -9,7 +9,7 @@ module.exports = function(req, res) {
 
   res.json({
     body: `
-      <iframe src="https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${data.lat}, ${data.lng}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${data.q}" width="300" height="225" frameborder="0" style="border:0" allowfullscreen></iframe>
     `
   });
 };
