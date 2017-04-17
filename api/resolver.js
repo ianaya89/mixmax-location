@@ -1,15 +1,14 @@
-module.exports = function(req, res) {
-  var data = JSON.parse(req.body.params);
-  const API_KEY = 'AIzaSyDntOFUzsjtroqZkB_lB6IimZnYOvzgaRg'
+const config = require('../config')
 
-  if (!data) {
-    res.status(403 /* Unauthorized */ ).send('Invalid params');
-    return;
-  }
+module.exports = (req, res) => {
+  const data = JSON.parse(req.body.params)
+  if (!data) { return res.status(403).send('Invalid params') }
+
+  const API_KEY = config.apiKey
 
   res.json({
     body: `
       <iframe src="https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${data.q}" width="300" height="225" frameborder="0" style="border:0" allowfullscreen></iframe>
     `
-  });
-};
+  })
+}

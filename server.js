@@ -1,40 +1,30 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
-const cors = require('cors');
+const express = require('express')
+const bodyParser = require('body-parser')
+const path = require('path')
+const cors = require('cors')
+const config = require('./config')
+const app = express()
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '/public')))
+app.use(bodyParser.urlencoded({ extended: true }))
 
-// So we can POST.
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.get('/editor', (req, res) => res.sendFile(path.join(__dirname, '/editor.html')))
+app.post('/api/resolver', cors(config.cors), require('./api/resolver'))
 
-// Since Mixmax calls this API directly from the client-side, it must be whitelisted.
-const corsOptions = {
-  origin: /^[^.\s]+\.mixmax\.com$/,
-  credentials: true
-};
+const msg = `🗺 ❗️ Running mixmax-location at port: ${config.port}`
 
-// The editor interface.
-app.get('/editor', function(req, res) {
-  res.sendFile(__dirname + '/editor.html');
-});
-
-// The in-email representation.
-app.post('/api/resolver', cors(corsOptions), require('./api/resolver'));
-
-if (process.env.NODE_ENV === 'production') {
-  app.listen(process.env.PORT || 8910);
+if (config.env === 'production') {
+  app.listen(config.port, () => console.log(msg))
 } else {
-  const pem = require('pem');
-  const https = require('https');
-  pem.createCertificate({ days: 1, selfSigned: true }, function(err, keys) {
-    if (err) throw err;
+  const pem = require('pem')
+  const https = require('https')
+
+  pem.createCertificate(config.pem, (err, keys) => {
+    if (err) { throw err }
 
     https.createServer({
       key: keys.serviceKey,
       cert: keys.certificate
-    }, app).listen(process.env.PORT || 8910);
-  });
+    }, app).listen(config.port, () => console.log(msg))
+  })
 }
