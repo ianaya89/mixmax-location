@@ -5,10 +5,10 @@ const cors = require('cors')
 const config = require('./config')
 const app = express()
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(path.join(__dirname, '/public')))
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/editor', (req, res) => res.sendFile(__dirname + '/editor.html'))
+app.get('/editor', (req, res) => res.sendFile(path.join(__dirname, '/editor.html')))
 app.post('/api/resolver', cors(config.cors), require('./api/resolver'))
 
 const msg = `🗺 ❗️ Running mixmax-location at port: ${config.port}`
