@@ -25,7 +25,8 @@
 
 <body data-current-theme="gmail">
   <div id="map"></div>
-  <button id="btnDone">DONE</button>
+  <button id="btnDone">OK</button>
+  <button id="btnDone">Cancel</button>
 
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDntOFUzsjtroqZkB_lB6IimZnYOvzgaRg&callback=initMap" async defer></script>
@@ -33,23 +34,27 @@
    <script>
       let map;
       const btnDone = document.getElementById('btnDone')
+      const btnCancel = document.getElementById('btnCancel')
 
       function initMap() {
-       navigator.geolocation.getCurrentPosition((position) => {
-         console.log(position)
-         const center = { lat: position.coords.latitude, lng:  position.coords.longitude}
-         map = new google.maps.Map(document.getElementById('map'), {
-           center,
-           zoom: 17
-         });
-       })
-      }
+        navigator.geolocation.getCurrentPosition((position) => {
+          const center = { lat: position.coords.latitude, lng:  position.coords.longitude}
+          map = new google.maps.Map(document.getElementById('map'), {
+            center,
+            zoom: 17
+           });
+         })
 
-      btnDone.addEventListener('click', () => {
-        Mixmax.done({
-          src: map.innerHTML
+        btnDone.addEventListener('click', () => {
+          ixmax.done({
+            src: document.getElementById('map').innerHTML
+          })
         })
-      })
+
+         btnDone.addEventListener('click', () => {
+          Mixmax.cancel()
+        })
+      }
      </script>
 </body>
 </html>
