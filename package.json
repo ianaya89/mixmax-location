@@ -1,21 +1,22 @@
 {
-  "name": "giphy-mixmax-app",
+  "name": "mixmax-location",
   "version": "0.0.1",
-  "description": "Giphy App for Mixmax",
+  "description": "Google Maps App for current location in Mixmax",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mixmaxhq/giphy-mixmax-app.git"
+    "url": "git://github.com/ianya89/mixmax-location.git"
   },
-  "author": "Chanpory Rith <chanpory@mixmax.com> (https://mixmax.com/)",
+  "author": "Ignacio Anaya <ignacio.anaya89@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mixmaxhq/giphy-mixmax-app/issues"
+    "url": "https://github.com/ianya89/mixmax-location/issues"
   },
-  "homepage": "https://github.com/mixmaxhq/giphy-mixmax-app",
+  "homepage": "https://github.com/ianya89/mixmax-location",
   "dependencies": {
     "body-parser": "^1.12.2",
     "cors": "^2.7.1",
