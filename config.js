@@ -1,5 +1,5 @@
 const config = {
-  port: process.env.port || 8910,
+  port: process.env.PORT || 8910,
   apiKey: 'AIzaSyDntOFUzsjtroqZkB_lB6IimZnYOvzgaRg',
   env: process.env.NODE_ENV || 'test',
 
