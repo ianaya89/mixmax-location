@@ -7,8 +7,11 @@ module.exports = (req, res) => {
   const API_KEY = config.apiKey
 
   res.json({
+    // body: `
+    //   <iframe src="https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${data.q}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    // `
     body: `
-      <iframe src="https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${data.q}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center=${data.q}&size=600x450&maptype=roadmap&markers=${data.q}&key=${API_KEY}" />
     `
   })
 }
